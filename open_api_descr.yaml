@@ -1,0 +1,41 @@
+openapi: "3.0.0"
+info:
+  title: "ClimateSeed test"
+  description: ""
+  version: "1.0.0"
+paths:
+  /:
+    post:
+      summary: "Only entry point of the API"
+      description: ""
+      operationId: "addPet"
+      parameters:
+      - in: "query"
+        name: "body"
+        required: true
+        schema:
+          type: object
+          properties:
+            quantity:
+              type: number
+            unit_from:
+              $ref: "#/components/schemas/units"
+            unit_to:
+              $ref: "#/components/schemas/units"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            "application/json":
+              schema:
+                type: object
+                properties:
+                  quantity:
+                    type: number
+                  unit:
+                    $ref: "#/components/schemas/units"
+components:
+  schemas:
+    units:
+      type: string
+      enum: ["g","kg","lb","metric ton"]
