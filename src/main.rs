@@ -1,4 +1,4 @@
-use rocket::{launch, post, routes, serde::json::Json, get};
+use rocket::{get, launch, post, routes, serde::json::Json};
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Copy, Deserialize, Serialize)]
@@ -50,7 +50,6 @@ fn api_convert(request: Json<ApiRequest>) -> Json<Response> {
 fn landing_page() -> &'static str {
     include_str!("../Readme.md")
 }
-
 
 #[launch]
 fn rocket() -> _ {
